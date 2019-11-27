@@ -1,0 +1,58 @@
+.searchBar-wrapper {
+	background-color: #242424;
+	padding: 24px 24px;
+	color: #ccc;
+}
+.searchBar-wrapper p {
+	font-size: 12px;
+	padding-bottom: 16px;
+}
+.searchBar-wrapper form {
+	color: #fff;
+}
+.searchBar-wrapper form input {
+	background-color: #242424;
+	border: 0px;
+	font-size: 24px;
+	color: #fff;
+	width: 98%;
+}
+
+*::-webkit-input-placeholder {
+    color: #ddd;
+}
+*:-moz-placeholder {
+     /* FF 4-18 */
+    color: #ddd;
+}
+*::-moz-placeholder {
+     /* FF 19+ */
+    color: #ddd;
+}
+*:-ms-input-placeholder {
+     /* IE 10+ */
+    color: #ddd;
+}
+input, select, textarea{
+    color: #fff;
+    border: 0px;
+}
+textarea:focus, input:focus {
+    color: #fff;
+    border: 0px;
+}
+@media screen and (min-width: 620px) {
+	.searchBar-wrapper {
+		padding-left: 32px;
+	}
+	.searchBar-wrapper p {
+		font-size: 14px;
+	}
+	.searchBar-wrapper form input {
+		font-size: 48px;
+		font-weight: 800;
+	}
+	.searchBar-wrapper form input {
+		width: 80%;
+	}
+}
