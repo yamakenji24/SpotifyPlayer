@@ -1,6 +1,5 @@
-import { fork, take, put, call, join } from 'redux-saga/effects';
+import { fork, take, put, call } from 'redux-saga/effects';
 import * as types from '../constants/actions';
-import * as SpotifyActions from '../actions';
 import axios from 'axios'
 
 function* fetchTracks(item, token){
@@ -13,7 +12,8 @@ function* fetchTracks(item, token){
     .then(res => res.tracks.items.map(item => ({
       id: item.id,
       name: item.name,
-      artists: item.artists[0].name  
+      artists: item.artists[0].name,
+      playUrl: item.preview_url
     })))
 }
 
@@ -66,7 +66,6 @@ function* fetchData(searchedItem, token) {
   let setTracks = yield call(fetchTracks, searchedItem, token);
   
   let parsedItems = mergeFetchedData(setArtists, setAlbums, setTracks)
-  console.log(parsedItems)
   yield put({type: types.RECEIVE_ITEM, item: searchedItem, itemData: parsedItems})
 }
 

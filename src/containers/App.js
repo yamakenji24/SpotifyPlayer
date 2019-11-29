@@ -1,21 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import authentication from '../authentication';
 
 import * as spotifyActions from '../actions'; //actions
 
 import SearchMusic from '../components/search-music';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
   
   render() {
     const { dispatch } = this.props
     const boundActionsCreators = bindActionCreators(spotifyActions, dispatch)
-    console.log(this.props)
     return (
       <SearchMusic
         item = {this.props.item}

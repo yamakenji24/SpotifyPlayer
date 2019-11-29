@@ -28,6 +28,7 @@ function token (state = '', action) {
     return state
   }
 }
+/*
 function itemData (state = { isFetching: false, items: []}, action) {
   switch(action.type) {
   case types.REQUEST_ITEM:
@@ -45,15 +46,15 @@ function itemData (state = { isFetching: false, items: []}, action) {
 	return state
   }
 }
-
+*/
 function spotify (state = {}, action) {
-  console.log("spotify")
   switch(action.type) {
   case types.REQUEST_ITEM:
   case types.RECEIVE_ITEM:
     return {
       ...state,
-      [action.item]: itemData(state[action.item],action)
+      items: action.itemData
+      //itemData(state[action.item],action)
     }
   default:
     return state
