@@ -6,6 +6,11 @@ import * as constants from '../constants/component'
 import SearchBar from './tabs/SearchBar';
 import TabList from './tabs/tab-list';
 import TabListItem from './tabs/tab-list-item';
+import TabContent from './tabs/tab-content';
+import Artist from './tabs/Artist';
+import Album from './tabs/Album';
+import Track from './tabs/Track';
+import '../styles/searchmusic.css';
 
 export default class SearchMusic extends Component {
   PropTypes: {
@@ -28,16 +33,13 @@ export default class SearchMusic extends Component {
   }
 
   componentDidMount() {
-    console.log("calling didmount")
     if(this.props.item === '') return
     this.props.fetchData(this.props.item, this.props.token)
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps, this.props)
-    if (this.props.item !== prevProps.item) {
+    if ((this.props.item !== prevProps.item) && (this.props.item !== '')) {
       this.props.fetchData(this.props.item, this.props.token)
-      console.log(this.props)
     }
   }
 
@@ -46,16 +48,36 @@ export default class SearchMusic extends Component {
   }
 
   getPanel() {
-    
+    if (this.props.spotify.items === undefined || this.props.spotify.items.length === 0) {
+      return ;
+    } else {
+      switch(this.state.showPanel) {
+      case constants.ARTIST_PANEL:
+        return (
+          <Artist artists={this.props.spotify.items.artists} />
+        );
+      case constants.ALBUM_PANEL:
+        return (
+          <Album albums={this.props.spotify.items.albums}/>
+        );
+        
+      case constants.TRACK_PANEL:
+        return (
+          <Track tracks={this.props.spotify.items.tracks}/>
+        );
+      default:
+        return null;
+        
+      }
+    }
   }
 
   handleSearchBarChange(nextItem) {
-    console.log(this.props)
 	this.props.boundActionsCreators.searchItem(nextItem)
   }
 
   render() {
-    console.log(this.props)
+    const panel = this.getPanel()
     return (
       <div>
         <SearchBar
@@ -67,6 +89,9 @@ export default class SearchMusic extends Component {
           <TabListItem dist={constants.ALBUM_PANEL} label="Album" onClick={this.onClick.bind(this)} />
           <TabListItem dist={constants.TRACK_PANEL} label="Track" onClick={this.onClick.bind(this)} />
         </TabList>
+        <TabContent>
+          {panel}
+        </TabContent>
       </div>
     )
   }
