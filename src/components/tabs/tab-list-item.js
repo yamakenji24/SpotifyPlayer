@@ -14,7 +14,7 @@ export default class TabListItem extends Component {
 
   render() {
     return (
-      <li role="presentation">
+      <li role="presentation" style={{textDecoration: 'underline', color: '#fff'}}>
         <a onClick={this.onClick.bind(this)} data-toggle="tab">{this.props.label}</a>
       </li>
     )
