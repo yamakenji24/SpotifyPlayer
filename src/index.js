@@ -11,7 +11,6 @@ const store = configureStore()
 
 //将来的には、react-routerを利用してclient-idを持ってない人用のアクセスを用意する
 const accessToken = getAuthToken()
-console.log(accessToken)
 
 ReactDom.render(
   <Provider store = {store}>

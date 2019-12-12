@@ -4,13 +4,14 @@ import '../../styles/searchBar.css'
 
 class SearchBar extends Component {
 
-  
   render() {
     let input = this.props.item
+
     return (
       <div className='searchBar-wrapper'>
         <p>Search for an Artists, Song or Album</p>
         <form onChange = {e => {
+          console.log(input, input.value)
           e.preventDefault()
           this.props.onChange(input.value)
         }}>

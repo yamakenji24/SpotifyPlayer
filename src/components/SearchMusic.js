@@ -15,7 +15,6 @@ import '../styles/searchmusic.css';
 export default class SearchMusic extends Component {
   PropTypes: {
     item: PropTypes.string.isRequired,
-    page: PropTypes.string.isRequired,
     spotify: PropTypes.array.isRequired,
     token: PropTypes.string.isRequired,
     fetchData: PropTypes.func.isRequired,
@@ -27,55 +26,47 @@ export default class SearchMusic extends Component {
     super(props)
     this.state = {
       album: [ {id: '', albumname: '', artistname: ''}],
-      showPanel: constants.ARTIST_PANEL
+      showPanel: constants.ARTIST_PANEL,
     }
     this.props.saveToken(this.props.token)
   }
-
+    
   componentDidMount() {
     if(this.props.item === '') return
     this.props.fetchData(this.props.item, this.props.token)
   }
-
+  
   componentDidUpdate(prevProps) {
     if ((this.props.item !== prevProps.item) && (this.props.item !== '')) {
       this.props.fetchData(this.props.item, this.props.token)
     }
   }
-
+  
   onClick(panelName) {
     this.setState({showPanel: panelName})
   }
 
   getPanel() {
     if (this.props.spotify.items === undefined || this.props.spotify.items.length === 0) {
-      return ;
+      return null;
     } else {
       switch(this.state.showPanel) {
       case constants.ARTIST_PANEL:
-        return (
-          <Artist artists={this.props.spotify.items.artists} />
-        );
+        return <Artist artists={this.props.spotify.items.artists} />;
       case constants.ALBUM_PANEL:
-        return (
-          <Album albums={this.props.spotify.items.albums}/>
-        );
-        
+        return <Album albums={this.props.spotify.items.albums}/>;
       case constants.TRACK_PANEL:
-        return (
-          <Track tracks={this.props.spotify.items.tracks}/>
-        );
+        return <Track tracks={this.props.spotify.items.tracks}/>;
       default:
         return null;
-        
       }
     }
   }
 
   handleSearchBarChange(nextItem) {
-	this.props.boundActionsCreators.searchItem(nextItem)
+    this.props.boundActionsCreators.searchItem(nextItem)
   }
-
+  
   render() {
     const panel = this.getPanel()
     return (

@@ -1,15 +1,6 @@
 import {combineReducers} from 'redux'
 import * as types from '../constants/actions';
 
-function page (state = 'top-result', action) {
-  switch(action.type) {
-  case types.SELECT_PAGE:
-    return action.page
-  default:
-    return state
-  }
-}
-
 function item (state = '', action) {
   switch(action.type) {
   case types.SEARCH_ITEM:
@@ -28,25 +19,7 @@ function token (state = '', action) {
     return state
   }
 }
-/*
-function itemData (state = { isFetching: false, items: []}, action) {
-  switch(action.type) {
-  case types.REQUEST_ITEM:
-	return {
-	  ...state, 
-	  isFetching: true,
-	}
-  case types.RECEIVE_ITEM:
-	return {
-	  ...state,
-	  isFetching: false,
-	  items: action.itemData,
-	}
-  default:
-	return state
-  }
-}
-*/
+
 function spotify (state = {}, action) {
   switch(action.type) {
   case types.REQUEST_ITEM:
@@ -62,7 +35,6 @@ function spotify (state = {}, action) {
 }
 
 const rootReducer = combineReducers({
-  page,
   item,
   spotify,
   token

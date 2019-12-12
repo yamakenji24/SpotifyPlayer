@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 
 import * as spotifyActions from '../actions'; //actions
 
-import SearchMusic from '../components/search-music';
+import SearchMusic from '../components/SearchMusic';
 
 class App extends Component {
   
@@ -14,9 +14,8 @@ class App extends Component {
     return (
       <SearchMusic
         item = {this.props.item}
-        page = {this.props.page}
         spotify = {this.props.spotify}
-        token={this.props.token}
+        token = {this.props.token}
         fetchData = {boundActionsCreators.fetchData}
         saveToken = {boundActionsCreators.saveToken}
         boundActionsCreators = {boundActionsCreators}
@@ -26,18 +25,10 @@ class App extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  let { item, page, spotify, token } = state
+  let { item, spotify, token } = state
   token = ownProps.token
-  const {
-    isFetching,
-    items: itemData
-  } = spotify[item] || {
-    isFetching: true,
-    items:[]
-  }
-  
   return {
-	page, item, spotify, token, isFetching, itemData
+    item, spotify, token
   }
 }
 export default connect(mapStateToProps)(App);

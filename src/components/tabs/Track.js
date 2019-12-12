@@ -22,6 +22,7 @@ export default class Track extends Component {
 
   playBack() {
     if(this.state.isPlaying) {
+      console.log(this.state)
       return (
         <Sound url={this.state.url} playStatus={Sound.status.PLAYING}/>
       )

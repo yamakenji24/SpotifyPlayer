@@ -1,12 +1,5 @@
 import * as types from '../constants/actions';
 
-export function selectPage(page) {
-  return {
-    type: types.SELECT_PAGE,
-    page
-  }
-}
-
 export function searchItem(item) {
   return {
     type: types.SEARCH_ITEM,
