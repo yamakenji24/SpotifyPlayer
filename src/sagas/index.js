@@ -1,4 +1,5 @@
-import { fork, take, put, call } from 'redux-saga/effects';
+//import { delay } from 'redux-saga';
+import { fork, take, put, call, delay } from 'redux-saga/effects';
 import * as types from '../constants/actions';
 import axios from 'axios'
 
@@ -69,10 +70,21 @@ function* fetchData(searchedItem, token) {
   yield put({type: types.RECEIVE_ITEM, item: searchedItem, itemData: parsedItems})
 }
 
+function forkLater(task, searchedItem, token) {
+  return fork(function* () {
+    yield delay(1000);
+    yield fork(task, searchedItem, token)
+  })
+}
+
 function* apiFlow() {
+  let task;
   while(typeof x === 'undefined') {
     const {searchedItem, token} = yield take(types.FETCH_DATA);
-    yield fork(fetchData, searchedItem, token);
+    if (task && task.isRunning()) {
+      task.cancel();
+    }
+    task = yield forkLater(fetchData, searchedItem, token);
   }
 }
 
