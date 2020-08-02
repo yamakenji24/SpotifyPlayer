@@ -3,8 +3,10 @@ import ReactDom from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import getAuthToken from './authentication';
 
-//将来的には、react-routerを利用してclient-idを持ってない人用のアクセスを用意する
-const accessToken = getAuthToken()
+//とりあえず
+getAuthToken().then((token) => {
+  console.log(token)
+})
 
 ReactDom.render(
   <div>
