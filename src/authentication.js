@@ -1,10 +1,11 @@
-import * as serverConstants from './constants/server-constants';
+import {
+  clientId, clientSecret, redirectUri
+} from './constants/server-constants';
 
 function authentication() {
-  if(/localhost:3000\/$/.test(window.location.href)) {
-    // implicit grant flow  (change it to authorization flows later)
+  if(/localhost:3000\/$/.test(window.location.href)) {    
     window.location.replace(
-      "https://accounts.spotify.com/authorize?client_id="+serverConstants.clientId+"&redirect_uri="+serverConstants.redirectUri+"&response_type=token&state=123"
+      "https://accounts.spotify.com/authorize?client_id="+clientId+"&redirect_uri="+redirectUri+"&response_type=token&state=123"
     )
   }
   let url = window.location.href
