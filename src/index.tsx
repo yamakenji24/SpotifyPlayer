@@ -4,9 +4,7 @@ import * as serviceWorker from './serviceWorker';
 import getAuthToken from './authentication';
 
 //とりあえず
-getAuthToken().then((token) => {
-  console.log(token)
-})
+getAuthToken()
 
 ReactDom.render(
   <div>
