@@ -1,5 +1,5 @@
 import {
-  clientId, clientSecret, redirectUri, b64Auth
+  clientId, redirectUri, b64Auth
 } from './constants/server-constants';
 
 const getAuthCode = () => {
@@ -9,11 +9,17 @@ const getAuthCode = () => {
     )
   }
   const url = window.location.href
-  return url.match(/(?:code)=([\S\s]*?)&/)[1]
+  const code = url.match(/(?:code)=([\S\s]*?)&/)
+  return code !== null ? code[1] : null
 }
 
-const getToken = async (authCode) => {
-  const response =  await fetch('https://accounts.spotify.com/api/token', {
+const saveToken = (key: string, token: string): void => {
+  sessionStorage.setItem(key, token);
+}
+
+const getToken = async (authCode: string): Promise<string|null> => {
+  //requestはx-www-form-urlencodedに指定する必要がある (axiosだと面倒くさいのでfetchで)
+  return await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
       Authorization: `Basic ${b64Auth}`,
@@ -21,15 +27,13 @@ const getToken = async (authCode) => {
     },
     body: `grant_type=authorization_code&code=${authCode}&redirect_uri=${redirectUri}`,
   })
-  
-  const {
-    access_token: accessToken,
-    refresh_token: refreshToken,
-    expires_in: expiresIn,
-  } = await response.json()
-  sessionStorage.setItem('accessToken', accessToken);
-  sessionStorage.setItem('refreshToken', refreshToken)
-  return accessToken;
+  .then(response => response.json())
+  .then(data => {
+    saveToken('accessToken', data.access_token)
+    saveToken('refreshToken', data.refresh_token)
+    return data.access_token
+  })
+  .catch(err => null)
 }
 
 const getAuthToken =  async () => {
@@ -37,7 +41,7 @@ const getAuthToken =  async () => {
   let accessToken = sessionStorage.getItem('accessToken');
   if (!accessToken || accessToken === undefined) {
     const authCode = await getAuthCode();
-    accessToken = await getToken(authCode)
+    accessToken = (authCode) ? await getToken(authCode) : null;
   }
   return accessToken
 }
