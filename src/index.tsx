@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import getAuthToken from './authentication';
-
-//とりあえず
-getAuthToken()
+import App from './app';
 
 ReactDom.render(
-  <div>
-    Hello
-  </div>,
+  <App />,
   document.getElementById('root')
 );
 
