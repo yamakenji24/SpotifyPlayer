@@ -2,12 +2,12 @@ import {
   clientId, redirectUri, b64Auth
 } from './constants/server-constants';
 
-const getAuthCode = () => {
-  if(/localhost:3000\/$/.test(window.location.href)) {    
-    window.location.replace(
+const getAuthCode = () => { 
+  if (/localhost:3000\/$/.test(window.location.href)) { 
+    window.location.href = 
       "https://accounts.spotify.com/authorize?client_id="+clientId+"&redirect_uri="+redirectUri+"&response_type=code&state=123"
-    )
   }
+
   const url = window.location.href
   const code = url.match(/(?:code)=([\S\s]*?)&/)
   return code !== null ? code[1] : null
