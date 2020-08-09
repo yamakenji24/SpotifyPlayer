@@ -8,8 +8,16 @@ const TopPage: FC = () => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("get token call")
     getAuthToken()
-    history.push('/search')
+    .then(token => {
+      if(token) history.push({
+        pathname: '/search',
+        state: {token: token}
+      })
+    })
+    .catch(err => console.log(err))
+    console.log('calling after get token call')
   }, [])
   /*
   useEffect (() => {
