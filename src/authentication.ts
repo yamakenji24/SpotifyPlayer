@@ -33,7 +33,7 @@ const getToken = async (authCode: string): Promise<string|null> => {
     saveToken('refreshToken', data.refresh_token)
     return data.access_token
   })
-  .catch(err => null)
+  .catch(err => Error('error'))
 }
 
 const getAuthToken =  async () => {
