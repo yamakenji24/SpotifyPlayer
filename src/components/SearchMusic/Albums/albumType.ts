@@ -23,7 +23,7 @@ export interface albumsJsonType {
   }
 }
 
-interface albumsItems {
+export interface albumsItems {
   album_type: string,
   artists: artists[],
   available_markets: string[],
@@ -43,7 +43,7 @@ interface albumsItems {
   uri: string
 }
 
-interface artists {
+export interface artists {
   external_urls: {[key: string]: string},
   href: string,
   id: string,
