@@ -14,7 +14,7 @@ const getAuthCode = () => {
 }
 
 const saveToken = (key: string, token: string): void => {
-  sessionStorage.setItem(key, token);
+  if (token) sessionStorage.setItem(key, token);
 }
 
 const getToken = async (authCode: string): Promise<string|null> => {
@@ -33,7 +33,7 @@ const getToken = async (authCode: string): Promise<string|null> => {
     saveToken('refreshToken', data.refresh_token)
     return data.access_token
   })
-  .catch(err => null)
+  .catch(err => Error('error'))
 }
 
 const getAuthToken =  async () => {
