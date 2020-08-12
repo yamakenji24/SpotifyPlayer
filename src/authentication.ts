@@ -14,7 +14,7 @@ const getAuthCode = () => {
 }
 
 const saveToken = (key: string, token: string): void => {
-  sessionStorage.setItem(key, token);
+  if (token) sessionStorage.setItem(key, token);
 }
 
 const getToken = async (authCode: string): Promise<string|null> => {
