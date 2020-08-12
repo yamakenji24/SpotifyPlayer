@@ -4,7 +4,7 @@ import {artistType, artistsJsonType} from './artistType';
 
 
 export const useSearchArtist = (token:string|null, searchInput:string):{artists: artistType[]} => {
-  const [artists, setArtists] = useState([{
+  const [artists, setArtists] = useState<artistType[]>([{
     id: '',
     name: '',
     image: {

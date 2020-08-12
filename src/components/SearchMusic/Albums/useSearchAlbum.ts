@@ -3,7 +3,7 @@ import axios from 'axios';
 import {albumType, albumsJsonType} from './albumType';
 
 export const useSearchAlbum = (token:string|null, searchInput:string):{albums: albumType[]} => {
-  const [albums, setAlbums] = useState([{
+  const [albums, setAlbums] = useState<albumType[]>([{
     id:'',
     name:'',
     artist:'',
