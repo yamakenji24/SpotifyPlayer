@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {artistType} from './artistType';
 
-type Props = {
+interface Props {
   artists: artistType[]
 }
 
-const Artists: FC<Props> = ({artists}) => {
+const Artists = ({artists}: Props): JSX.Element => {
   return (
     <> 
       {
