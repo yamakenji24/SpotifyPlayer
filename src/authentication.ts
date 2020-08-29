@@ -2,19 +2,19 @@ import {
   clientId, redirectUri, b64Auth
 } from './constants/server-constants';
 
-const getAuthCode = () => {
-  if(/localhost:3000\/$/.test(window.location.href)) {    
-    window.location.replace(
+const getAuthCode = () => { 
+  if (/localhost:3000\/$/.test(window.location.href)) { 
+    window.location.href = 
       "https://accounts.spotify.com/authorize?client_id="+clientId+"&redirect_uri="+redirectUri+"&response_type=code&state=123"
-    )
   }
+
   const url = window.location.href
   const code = url.match(/(?:code)=([\S\s]*?)&/)
   return code !== null ? code[1] : null
 }
 
 const saveToken = (key: string, token: string): void => {
-  sessionStorage.setItem(key, token);
+  if (token) sessionStorage.setItem(key, token);
 }
 
 const getToken = async (authCode: string): Promise<string|null> => {
@@ -33,7 +33,7 @@ const getToken = async (authCode: string): Promise<string|null> => {
     saveToken('refreshToken', data.refresh_token)
     return data.access_token
   })
-  .catch(err => null)
+  .catch(err => Error('error'))
 }
 
 const getAuthToken =  async () => {
