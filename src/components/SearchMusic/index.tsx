@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useState, useCallback} from 'react';
 import Artists from './Artists';
 import Albums from './Albums';
 import Tracks from './Tracks';
@@ -12,13 +12,14 @@ const SearchMusic: FC = () => {
   const [fetchData, {artists, albums, tracks}] = useSearch()
   const [panel, setPanel] = useState(ARTIST_PANEL)
 
-  const handleonChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleonChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => { 
     fetchData(e.target.value)
-  }
-  const handleOnClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  }, [])
+
+  const handleOnClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
     setPanel(e.currentTarget.name)
-  }
+  }, [])
 
   const switchPanel = () => {
     switch(panel) {
