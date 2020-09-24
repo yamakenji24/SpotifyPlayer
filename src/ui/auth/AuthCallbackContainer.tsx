@@ -12,6 +12,9 @@ interface SignInApiResponse {
 }
 
 export const AuthCallbackContainer = () => {
+  const [toHome, setToHome] = useState(false)
+  const [toSearch, setToSearch] = useState(false)
+
   const getAuthCode = (): Promise<string> => { 
     const url = window.location.href
     const code = url.match(/(?:code)=([\S\s]*?)&/)
@@ -46,12 +49,16 @@ export const AuthCallbackContainer = () => {
         const data = await getToken(code)
         sessionStorage.setItem('accessToken', data.access_token)
         sessionStorage.setItem('refreshToken', data.refresh_token)
+        setToSearch(true)
       } catch(error) {
-        console.log(error)
+        setToHome(true)
       }
     }
     fetchToken()
   }, [])
+
+  if (toHome) return <Redirect to="/" />
+  if (toSearch) return <Redirect to="/search" />
 
   return (
     <>
