@@ -1,4 +1,4 @@
-import {albumsItems, artists} from '../Albums/albumType';
+import {albumsItems, artists} from './albumType';
 
 export interface trackType {
   id: string,

@@ -1,11 +1,12 @@
-import React from 'react';
-import {artistType} from './artistType';
+import * as React from 'react';
+import { artistType } from '../../../types/artistType';
+import './artist.css';
 
 interface Props {
-  artists: artistType[]
+  artists: artistType[];
 }
 
-const Artists = ({artists}: Props): JSX.Element => {
+export const Artists = ({artists}: Props): JSX.Element => {
   return (
     <> 
       {
@@ -23,5 +24,3 @@ const Artists = ({artists}: Props): JSX.Element => {
     </>
   )
 }
-
-export default Artists;

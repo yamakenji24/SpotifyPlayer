@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {useSearchArtist} from './Artists/useSearchArtist';
-import {useSearchAlbum} from './Albums/useSearchAlbum';
-import {useSearchTrack} from './Tracks/useSearchTrack';
+import {useSearchArtist} from './useSearchArtist';
+import {useSearchAlbum} from './useSearchAlbum';
+import {useSearchTrack} from './useSearchTrack';
 
-import {artistType} from './Artists/artistType';
-import {albumType} from './Albums/albumType';
-import {trackType} from './Tracks/trackType';
+import {artistType} from '../../../types/artistType'
+import {albumType} from './../../../types/albumType';
+import {trackType} from '../../../types/trackType';
 
 export const useSearch = (): [
   React.Dispatch<React.SetStateAction<string>>,
@@ -18,13 +18,13 @@ export const useSearch = (): [
 ] => {
   const [searchInput, setSearchInput] = useState('')
   const history = useHistory();
-  const [token, setToken] = useState<string | null>('')
+  const [token, setToken] = useState<string>('')
   const {artists} = useSearchArtist(token, searchInput)
   const {albums} = useSearchAlbum(token, searchInput)
   const {tracks} = useSearchTrack(token, searchInput)
 
   const getToken = async () => {
-    const checkToken = sessionStorage.getItem('accessToken')
+    const checkToken = sessionStorage.getItem('accessToken')!
     if(!checkToken) {
       sessionStorage.removeItem('accessToken')
       history.push('/')
@@ -34,7 +34,7 @@ export const useSearch = (): [
 
   useEffect(() => {
     getToken()
-  })
+  }, [])
 
   return [setSearchInput, {artists, albums, tracks}]
 }

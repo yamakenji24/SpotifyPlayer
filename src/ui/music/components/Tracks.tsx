@@ -1,11 +1,12 @@
-import React, {FC} from 'react';
-import {trackType} from './trackType';
+import * as React from 'react';
+import { trackType } from '../../../types/trackType';
+import './track.css';
 
-type Props = {
-  tracks: trackType[]
+interface Props {
+  tracks: trackType[];
 }
 
-const Tracks :FC<Props> = ({tracks}) => {
+export const Tracks = ({tracks}: Props): JSX.Element => {
   return (
     <>
       {
@@ -20,5 +21,3 @@ const Tracks :FC<Props> = ({tracks}) => {
     </>
   )
 }
-
-export default Tracks;

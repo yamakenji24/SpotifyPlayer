@@ -1,11 +1,12 @@
-import React, {FC} from 'react';
-import {albumType} from './albumType';
+import * as React from 'react';
+import { albumType } from '../../../types/albumType';
+import './album.css';
 
-type Props = {
-  albums: albumType[]
+interface Props {
+  albums: albumType[];
 }
 
-const Albums: FC<Props> = ({albums}) => {
+export const Albums = ({albums}: Props): JSX.Element => {
   return (
     <>
       {
@@ -24,5 +25,3 @@ const Albums: FC<Props> = ({albums}) => {
     </>
   )
 }
-
-export default Albums;
