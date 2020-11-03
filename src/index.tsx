@@ -9,7 +9,7 @@ import { MusicContainer } from './ui/music/MusicContainer';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDom.render(
-    <Router>
+    <Router basename="https://yamakenji24.github.io/SpotifyPlayer/">
       <Switch>
         <Route exact path='/' component={AuthContainer} />
         <Route path='/callback/' component={AuthCallbackContainer}/>
