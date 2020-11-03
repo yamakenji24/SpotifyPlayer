@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/SpotifyPlayer/static/css/main.f8cf6019.chunk.css",
-    "main.js": "/SpotifyPlayer/static/js/main.ebb8eb20.chunk.js",
-    "main.js.map": "/SpotifyPlayer/static/js/main.ebb8eb20.chunk.js.map",
+    "main.js": "/SpotifyPlayer/static/js/main.cee3ae4f.chunk.js",
+    "main.js.map": "/SpotifyPlayer/static/js/main.cee3ae4f.chunk.js.map",
     "runtime-main.js": "/SpotifyPlayer/static/js/runtime-main.93b8ac74.js",
     "runtime-main.js.map": "/SpotifyPlayer/static/js/runtime-main.93b8ac74.js.map",
     "static/js/2.022a2be8.chunk.js": "/SpotifyPlayer/static/js/2.022a2be8.chunk.js",
     "static/js/2.022a2be8.chunk.js.map": "/SpotifyPlayer/static/js/2.022a2be8.chunk.js.map",
     "index.html": "/SpotifyPlayer/index.html",
-    "precache-manifest.21d7706f1318a946a036d23874625264.js": "/SpotifyPlayer/precache-manifest.21d7706f1318a946a036d23874625264.js",
+    "precache-manifest.88dbbaec843bc3fac76a0db468309823.js": "/SpotifyPlayer/precache-manifest.88dbbaec843bc3fac76a0db468309823.js",
     "service-worker.js": "/SpotifyPlayer/service-worker.js",
     "static/css/main.f8cf6019.chunk.css.map": "/SpotifyPlayer/static/css/main.f8cf6019.chunk.css.map",
     "static/js/2.022a2be8.chunk.js.LICENSE.txt": "/SpotifyPlayer/static/js/2.022a2be8.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.93b8ac74.js",
     "static/js/2.022a2be8.chunk.js",
     "static/css/main.f8cf6019.chunk.css",
-    "static/js/main.ebb8eb20.chunk.js"
+    "static/js/main.cee3ae4f.chunk.js"
   ]
 }
