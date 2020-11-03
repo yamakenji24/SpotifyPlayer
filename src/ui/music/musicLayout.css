@@ -1,3 +1,22 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+}
+body {
+	background-color: #131313;
+	color: #fff;
+}
+button {
+	background-color: #242424;
+	color: #ccc;
+	text-decoration: none;
+	outline: 0;
+}
+button:hover {
+	color: #fff;
+}
+
 .searchBar-wrapper {
 	background-color: #242424;
 	padding: 24px 24px;
@@ -7,10 +26,7 @@
 	font-size: 12px;
 	padding-bottom: 16px;
 }
-.searchBar-wrapper form {
-	color: #fff;
-}
-.searchBar-wrapper form input {
+.searchBar-wrapper input {
 	background-color: #242424;
 	border: 0px;
 	font-size: 24px;
@@ -48,11 +64,31 @@ textarea:focus, input:focus {
 	.searchBar-wrapper p {
 		font-size: 14px;
 	}
-	.searchBar-wrapper form input {
+	.searchBar-wrapper input {
 		font-size: 48px;
-		font-weight: 800;
+    font-weight: 800;
+    width: 80%;
 	}
-	.searchBar-wrapper form input {
-		width: 80%;
+}
+
+.navbar-wrapper {
+	padding: 24px 16px;
+	text-align: center;
+	background-color: #151515;
+}
+.navbar-wrapper button {
+	display: inline-block;
+	padding: 0px 8px;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+@media screen and (min-width: 620px) {
+	.navbar-wrapper {
+		padding: 32px;
+	}
+	.navbar-wrapper button {
+		display: inline-block;
+		padding: 0px 20px;
+		font-size: 14px;
 	}
 }
