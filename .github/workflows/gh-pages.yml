@@ -14,15 +14,19 @@ jobs:
     # 実行するインスタンス
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
     # チェックアウト
     - uses: actions/checkout@v2
 
     # 使用するnodeのバージョンを指定
-    - name: Use Node.js 
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: 14.x
+        node-version: ${{ matrix.node-version }}
 
     # パッケージのインストールとアプリのビルド
     - name: Install Packages
@@ -31,6 +35,7 @@ jobs:
       run: npm run build --if-present
       
       env:
+        CI: false
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
         REACT_APP_CLIENT_SECRET: ${{ secrets.REACT_APP_CLIENT_SECRET }}
         REACT_APP_REDIRECT_URI: ${{ secrets.REACT_APP_REDIRECT_URI }}
