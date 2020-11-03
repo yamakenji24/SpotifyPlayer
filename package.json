@@ -29,9 +29,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-
   "homepage": "https://yamakenji24.github.io/SpotifyPlayer/",
-
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -32,7 +32,7 @@ jobs:
     # パッケージのインストールとアプリのビルド
     - name: Install Packages
       run: | 
-        npm install
+        npm ci
         npm run build
       env:
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
