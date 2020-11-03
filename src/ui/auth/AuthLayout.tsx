@@ -4,10 +4,8 @@ import { clientId, redirectUri } from '../../constants/server-constants';
 
 export const AuthLayout = ():JSX.Element => {
   const handleClick = () => {
-    if (/localhost:3000\/$/.test(window.location.href)) { 
-      window.location.href = 
-        "https://accounts.spotify.com/authorize?client_id="+clientId+"&redirect_uri="+redirectUri+"&response_type=code&state=123"
-    }
+    window.location.href = 
+      "https://accounts.spotify.com/authorize?client_id="+clientId+"&redirect_uri="+redirectUri+"&response_type=code&state=123" 
   }
 
   return (
