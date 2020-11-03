@@ -8,8 +8,9 @@ import { AuthCallbackContainer } from './ui/auth/AuthCallbackContainer';
 import { MusicContainer } from './ui/music/MusicContainer';
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("checking render")
   ReactDom.render(
-    <Router basename="https://yamakenji24.github.io/SpotifyPlayer/">
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path='/' component={AuthContainer} />
         <Route path='/callback/' component={AuthCallbackContainer}/>
