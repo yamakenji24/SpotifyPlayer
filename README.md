@@ -1,4 +1,5 @@
 # Spotify Player
+[![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## 概要
 Spotify APIを利用した音楽再生アプリです．React, Reduxを利用して管理しています．  
