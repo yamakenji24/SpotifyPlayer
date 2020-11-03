@@ -6,7 +6,7 @@ name: Release GitHub Page
 on:
   push:
     branches:
-      - master
+      - deploy
 
 # ジョブの定義
 jobs:
@@ -14,15 +14,19 @@ jobs:
     # 実行するインスタンス
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
     steps:
     # チェックアウト
     - uses: actions/checkout@v2
 
     # 使用するnodeのバージョンを指定
-    - name: Use Node.js 
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: 14.x
+        node-version: ${{ matrix.node-version }}
 
     # パッケージのインストールとアプリのビルド
     - name: Install Packages
