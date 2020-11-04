@@ -6,7 +6,7 @@ name: Release GitHub Page
 on:
   push:
     branches:
-      - fix/support-router-on-ghpage
+      - master
 
 # ジョブの定義
 jobs:
