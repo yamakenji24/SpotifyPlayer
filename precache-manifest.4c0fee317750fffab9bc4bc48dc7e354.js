@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "aeb331b7368e2bb8f91efc9b7cec510b",
+    "revision": "3a2d250d186c4f1ec526aef47ec63e04",
     "url": "/SpotifyPlayer/index.html"
   },
   {
